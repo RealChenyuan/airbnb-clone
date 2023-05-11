@@ -1,9 +1,9 @@
-import Banner from "@/Components/Banner";
-import Header from "../Components/Header";
-import SmallCard from "@/Components/SmallCard";
-import MediumCard from "@/Components/MediumCard";
-import LargeCard from "@/Components/LargeCard";
-import Footer from "@/Components/Footer";
+import Banner from "@/app/components/Banner";
+import Header from "@/app/components/Header/Header";
+import SmallCard from "@/app/components/SmallCard";
+import MediumCard from "@/app/components/MediumCard";
+import LargeCard from "@/app/components/LargeCard";
+import Footer from "@/app/components/Footer";
 
 async function getFetchData(url) {
   // const res = await fetch("https://links.papareact.com/pyp");
@@ -21,7 +21,7 @@ export default async function Home() {
   const cardsData = await getFetchData("https://www.jsonkeeper.com/b/VHHT");
 
   return (
-    <div className="">
+    <div className="relative">
       <Header />
       <Banner />
 
