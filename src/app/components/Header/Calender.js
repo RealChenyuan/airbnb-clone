@@ -29,10 +29,16 @@ function Calender(props) {
         props.location
       }&startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}&guestNum=${guestNum}`
     );
+
+    props.onSearch();
   };
 
   return (
-    <div className="flex flex-col col-span-3 mx-auto mt-5 -mb-5">
+    <div
+      className={`flex flex-col col-span-3 mx-auto mt-5 -mb-5 ${
+        props.onShow ? "block" : "hidden"
+      }`}
+    >
       <DateRangePicker
         ranges={[selectionRange]}
         minDate={new Date()}

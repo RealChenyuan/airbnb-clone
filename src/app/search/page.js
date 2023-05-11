@@ -3,19 +3,20 @@ import Header from "@/app/components/Header/Header";
 import Houses from "../components/Houses";
 import Map from "../components/Map";
 
-import React, { use } from "react";
+import React from "react";
 
 async function getSearchResults() {
   const res = await fetch(
-    "https://react-http-87d82-default-rtdb.firebaseio.com/houses.json"
+    "https://react-http-87d82-default-rtdb.firebaseio.com/houses.json",
+    { cache: "no-store" }
   );
   const searchResults = await res.json();
 
   return searchResults;
 }
 
-function SearchPage() {
-  const searchResults = use(getSearchResults())["-NV4YYxDCLzIVPJCQAeV"];
+async function SearchPage() {
+  const searchResults = (await getSearchResults())["-NV4YYxDCLzIVPJCQAeV"];
 
   return (
     <div>

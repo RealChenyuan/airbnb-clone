@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   SearchIcon,
   GlobeAltIcon,
@@ -66,9 +66,12 @@ function Header() {
         </div>
       </div>
 
-      {searchInput && (
-        <Calender resetInput={resetInput} location={searchInput} />
-      )}
+      <Calender
+        onShow={searchInput}
+        resetInput={resetInput}
+        location={searchInput}
+        onSearch={() => setSearchInput("")}
+      />
     </header>
   );
 }
