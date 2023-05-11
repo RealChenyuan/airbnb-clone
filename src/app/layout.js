@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 import ProgressBar from "@badrap/bar-of-progress";
-import { AIRBNB_COLOR } from "@/config/config";
+import { AIRBNB_COLOR } from "@/app/config/config";
 import { Router } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });

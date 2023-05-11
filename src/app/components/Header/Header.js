@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   SearchIcon,
   GlobeAltIcon,
@@ -10,15 +10,22 @@ import {
 } from "@heroicons/react/solid";
 import Calender from "./Calender";
 import { useRouter } from "next/navigation";
+import usePathData from "../../../../hooks/use-path";
 
-function Header({ placeholder }) {
+function Header() {
   const [searchInput, setSearchInput] = useState("");
-  const [searchHint, setSearchHint] = useState("Start your search");
   const router = useRouter();
 
-  useEffect(() => {
-    setSearchHint(placeholder || "Start your search");
-  }, [placeholder]);
+  let placeholder = "Start your search";
+
+  const pathData = usePathData();
+
+  if (pathData) {
+    const { location, range, guestNum } = pathData;
+    placeholder = `${location} | ${range} | ${
+      guestNum === 1 ? "1 guest" : `${guestNum} guests`
+    }`;
+  }
 
   const resetInput = () => {
     setSearchInput("");
@@ -44,7 +51,7 @@ function Header({ placeholder }) {
           onChange={(e) => setSearchInput(e.target.value)}
           className="pl-5 bg-transparent outline-none text-gray-600 placeholder-gray-400 w-full"
           type="text"
-          placeholder={searchHint}
+          placeholder={placeholder}
         />
         <SearchIcon className="hidden md:inline-flex w-8 bg-red-400 text-white rounded-full p-1.5 md:mx-2 cursor-pointer" />
       </div>

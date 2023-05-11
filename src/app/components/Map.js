@@ -58,8 +58,6 @@ function Map({ houseItems }) {
     [houseItems, selectedLocation]
   );
 
-  console.log(selectedLocation);
-
   return (
     <ReactMapGL
       mapStyle="mapbox://styles/chenyan29/clhhsigv101eb01qu8u12akgk"

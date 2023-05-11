@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from "react";
-import InfoCard from "./InfoCard";
+"use client";
 
-function Houses({ range, guestNum, location, houseItems }) {
+import React from "react";
+import InfoCard from "./InfoCard";
+import usePathData from "../../../hooks/use-path";
+
+function Houses({ houseItems }) {
+  const { location, range, guestNum } = usePathData();
+
   return (
     <section className="flex-grow pt-14 px-10">
       <p className="text-xs">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
-import { AIRBNB_COLOR } from "@/config/config";
+import { AIRBNB_COLOR } from "@/app/config/config";
 import { UsersIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/navigation";
 
