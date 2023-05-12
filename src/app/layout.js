@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextTopLoader color={AIRBNB_COLOR} />
+        <NextTopLoader color={AIRBNB_COLOR} showSpinner={false} />
         {children}
       </body>
     </html>

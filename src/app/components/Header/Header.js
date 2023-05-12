@@ -9,12 +9,39 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/solid";
 import Calender from "./Calender";
-import { useRouter } from "next/navigation";
 import usePathData from "../../../../hooks/use-path";
+import usePRouter from "../../../../hooks/use-progress-router";
+import { usePathname, useSearchParams } from "next/navigation";
+import nProgress from "nprogress";
 
 function Header() {
   const [searchInput, setSearchInput] = useState("");
-  const router = useRouter();
+  const router = usePRouter();
+
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    nProgress.done();
+  }, [pathname, searchParams]);
+
+  useEffect(() => {
+    const { navigation } = window;
+    if (navigation) {
+      navigation.addEventListener("currententrychange", nProgress.start);
+      navigation.addEventListener("navigate", nProgress.start);
+      navigation.addEventListener("navigateerror", nProgress.done);
+      navigation.addEventListener("navigatesuccess", nProgress.done);
+      return () => {
+        document.removeEventListener("DOMContentLoaded", nProgress.start);
+        document.removeEventListener("DOMContentLoaded", nProgress.done);
+        navigation.removeEventListener("currententrychange", nProgress.start);
+        navigation.removeEventListener("navigate", nProgress.start);
+        navigation.removeEventListener("navigateerror", nProgress.done);
+        navigation.removeEventListener("navigatesuccess", nProgress.done);
+      };
+    }
+  }, []);
 
   let placeholder = "Start your search";
 

@@ -5,12 +5,13 @@ import { DateRangePicker } from "react-date-range";
 import { AIRBNB_COLOR } from "@/app/config/config";
 import { UsersIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/navigation";
+import usePRouter from "../../../../hooks/use-progress-router";
 
 function Calender(props) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [guestNum, setGuestNum] = useState(1);
-  const router = useRouter();
+  const router = usePRouter();
 
   const selectionRange = {
     startDate,
